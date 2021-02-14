@@ -15,7 +15,7 @@ public class Main {
         jobs.add(job3);
 
         for (Job job : jobs){
-            System.out.println(job.getName()+","+job.getEmployer()+","+job.getLocation()+","+job.getPositionType()+","+job.getCoreCompetency());
+            System.out.println(job.getName()+", "+job.getEmployer()+", "+job.getLocation()+", "+job.getPositionType()+", "+job.getCoreCompetency());
         }
     }
 

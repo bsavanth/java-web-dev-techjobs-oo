@@ -1,5 +1,6 @@
 package org.launchcode.techjobs_oo;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 public class Job {
@@ -17,11 +18,13 @@ public class Job {
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
 
-    public Job(int id) {
-        this.id = id;
+    public Job() {
+        id = nextId;
+        nextId++;
     }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+        this();
         this.name = name;
         this.employer = employer;
         this.location = location;
@@ -31,6 +34,36 @@ public class Job {
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
+
+    @Override
+    public String toString()
+    {
+        System.out.println();
+        String temp="ID: "+getId();
+
+        if(getName()==null && getEmployer() == null &getLocation()==null &getPositionType()==null &getCoreCompetency()==null)
+        {
+
+            return "OOPS! This job does not seem to exist.\n";
+        }
+
+        if(getName()==null) { temp+="\nName: Data not available"; }
+        else { temp+="\nName: "+getName();}
+
+        if(getEmployer().getValue()==null) { temp+="\nEmployer: Data not available"; }
+        else { temp+="\nEmployer: "+getEmployer().getValue();}
+
+        if(getLocation().getValue()==null) { temp+="\nLocation: Data not available"; }
+        else { temp+="\nLocation: "+getLocation().getValue();}
+
+        if(getPositionType().getValue()==null) { temp+="\nPosition Type: Data not available"; }
+        else { temp+="\nPosition Type: "+getPositionType().getValue();}
+
+        if(getCoreCompetency().getValue()==null) { temp+="\nCore Competency: Data not available"; }
+        else { temp+="\nCore Competency: "+getCoreCompetency().getValue();}
+
+        return temp;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -64,6 +97,10 @@ public class Job {
 
     public void setEmployer(Employer employer) {
         this.employer = employer;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Location getLocation() {
